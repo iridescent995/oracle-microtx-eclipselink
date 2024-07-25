@@ -1,0 +1,40 @@
+server:
+  port : 8080
+spring:
+  microtx:
+    coordinator-url: http://localhost:9000/api/v1
+    participant-url: http://localhost:8082
+    propagation-active: true
+    http-client-connection-pool-size: 60
+    xa-transaction-timeout: 60000
+    xa-resource-manager-id: SPRING-JPA-ECLIPSE-LINK-C9E08F3FE06C
+    xa-xa-support: true
+    xa-llr-support: false
+    xa-lrc-support: false
+    xa-llr-delete-commit-record-interval: 720000
+    xa-promotable-active: false
+    xa-rac-active: false
+    xa-weblogic-transaction-support: false
+    xa-weblogic-namespace: weblogic
+departmentDataSource:
+  url: "jdbc:oracle:thin:@host:port/DB"
+  user: "user"
+  password: "password"
+  xaOracleucp:
+    driver-class-name: oracle.jdbc.OracleDriver
+    type: oracle.ucp.jdbc.PoolXADataSource
+    connection-factory-class-name: oracle.jdbc.xa.client.OracleXADataSource
+    sql-for-validate-connection: select * from dual
+    connection-pool-name: connectionPoolName2
+    initial-pool-size: 15
+    min-pool-size: 10
+    max-pool-size: 30
+    data-source-name: deptxadatasource
+
+  oracleucp:
+    driver-class-name: oracle.jdbc.OracleDriver
+    type: oracle.ucp.jdbc.PoolDataSource
+    connection-factory-class-name: oracle.jdbc.pool.OracleDataSource
+    sql-for-validate-connection: select * from dual
+    connection-pool-name: connectionPoolName3
+    data-source-name: deptdatasource
